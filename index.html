@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AdvanceJs_409-01</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="container">
+        <h1>Validating Web Forms</h1>
+        <div class="form">
+            <form action="">
+                <div class="textCenter">
+                    <label for="">First Name</label><br />
+                    <input onkeyup="FirstNameKey()" id="FirstName" type="text" />
+                    <h6 id="FName"></h6>
+                </div>
+
+                <div class="textCenter">
+                    <label for="">Last Name</label><br />
+                    <input onkeyup="LastNameKey()" id="LastName" type="text" />
+                    <h6 id="LName"></h6>
+                </div>
+
+                <div class="textCenter">
+                    <label for="">Email</label><br />
+                    <input onkeyup="EmailKey()" id="Email" type="email" />
+                    <h6 id="email"></h6>
+                </div>
+
+                <div class="textCenter">
+                    <label for="">Password</label><br />
+                    <input onkeyup="PasswordKey()" id="Password" type="password" />
+                    <h6 id="password"></h6>
+                </div>
+
+                <div class="textCenter">
+                    <label for="">Telephone</label><br />
+                    <input onkeyup="TelephoneKey()" id="Telephone" type="number" />
+                    <h6 id="telephone"></h6>
+                </div>
+
+                <div class="textCenter">
+                    <label for="">Your bio</label><br />
+                    <input onkeyup="YouBioKey()" id="YourBio" type="text" />
+                    <h6 id="YBio"></h6>
+                </div>
+
+                <button type="button" id="button">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function FirstNameKey() {
+            const FirstName = document.getElementById("FirstName");
+            const FName = document.getElementById("FName");
+            if (
+                /^[a-zA-Z]/.test(FirstName.value) &&
+                /^[a-zA-Z]{3,16}$/.test(FirstName.value)
+            ) {
+                FName.innerHTML = "";
+                console.log(true);
+                FirstName.style.border = "2px solid #43c988";
+                FirstName.style.backgroundColor = "rgb(239 255 247)";
+                document.getElementById("button").style.backgroundColor = "#43c988";
+            } else {
+                const error =
+                    "First name should be alphanumeric and contain 3 - 16 characters";
+                FName.innerHTML = error;
+                FirstName.style.border = "2px solid #f7b1dd";
+                FirstName.style.backgroundColor = "#ffefef";
+                document.getElementById("button").style.backgroundColor =
+                    "rgb(78, 78, 79)";
+            }
+        }
+
+        function LastNameKey() {
+            const LastName = document.getElementById("LastName");
+            const LName = document.getElementById("LName");
+            if (
+                /^[a-zA-Z]/.test(LastName.value) &&
+                /^[a-zA-Z]{3,16}$/.test(LastName.value)
+            ) {
+                console.log(true);
+                LName.innerHTML = "";
+                LastName.style.border = "2px solid #43c988";
+                LastName.style.backgroundColor = "rgb(239 255 247)";
+                document.getElementById("button").style.backgroundColor = "#43c988";
+            } else {
+                const error =
+                    "First name should be alphanumeric and contain 3 - 16 characters";
+                LName.innerHTML = error;
+                LastName.style.border = "2px solid #f7b1dd";
+                LastName.style.backgroundColor = "#ffefef";
+                document.getElementById("button").style.backgroundColor =
+                    "rgb(78, 78, 79)";
+            }
+        }
+
+        function EmailKey() {
+            const Email = document.getElementById("Email");
+            const email = document.getElementById("email");
+            if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(Email.value)) {
+                console.log(true);
+                email.innerHTML = "";
+                Email.style.border = "2px solid #43c988";
+                Email.style.backgroundColor = "rgb(239 255 247)";
+                document.getElementById("button").style.backgroundColor = "#43c988";
+            } else {
+                const error = "Email must be a valid address, e.g. example@gmail.com";
+                email.innerHTML = error;
+                Email.style.border = "2px solid #f7b1dd";
+                Email.style.backgroundColor = "#ffefef";
+                document.getElementById("button").style.backgroundColor =
+                    "rgb(78, 78, 79)";
+            }
+        }
+
+        function PasswordKey() {
+            const Password = document.getElementById("Password");
+            const password = document.getElementById("password");
+            let regexp1 = /^(?=.*\d)(?=.*[@_-])(?=.*[a-z])(?=.*[A-Z]).{8,16}$/;
+            // let regexp1 = [a-zA-Z][a-zA-Z0-9-_.]{1,20}
+            if (regexp1.test(Password.value)) {
+                console.log(true);
+                password.innerHTML = "";
+                Password.style.border = "2px solid #43c988";
+                Password.style.backgroundColor = "rgb(239 255 247)";
+                document.getElementById("button").style.backgroundColor = "#43c988";
+            } else {
+                const error =
+                    "Password must be alphanumeric (@, _ and - are also allowed ) and between 6 - 20 characters";
+                password.innerHTML = error;
+                Password.style.border = "2px solid #f7b1dd";
+                Password.style.backgroundColor = "#ffefef";
+                document.getElementById("button").style.backgroundColor =
+                    "rgb(78, 78, 79)";
+                console.log(false);
+            }
+        }
+
+        function TelephoneKey() {
+            const Telephone = document.getElementById("Telephone");
+            const telephone = document.getElementById("telephone");
+            if (/^[0-9]{11,11}$/.test(Telephone.value)) {
+                console.log(true);
+                telephone.innerHTML = "";
+                Telephone.style.border = "2px solid #43c988";
+                Telephone.style.backgroundColor = "rgb(239 255 247)";
+                document.getElementById("button").style.backgroundColor = "#43c988";
+            } else {
+                const error = "A valid Telephone number (11 digits and 333-333-3334)";
+                telephone.innerHTML = error;
+                Telephone.style.border = "2px solid #f7b1dd";
+                Telephone.style.backgroundColor = "#ffefef";
+                document.getElementById("button").style.backgroundColor =
+                    "rgb(78, 78, 79)";
+            }
+        }
+
+        function YouBioKey() {
+            const YourBio = document.getElementById("YourBio");
+            const YBio = document.getElementById("YBio");
+            let regexp2 = new RegExp("^[a-z_-]{8,50}$");
+            if (regexp2.test(YourBio.value)) {
+                console.log(true);
+                YBio.innerHTML = "";
+                YourBio.style.border = "2px solid #43c988";
+                YourBio.style.backgroundColor = "rgb(239 255 247)";
+                document.getElementById("button").style.backgroundColor = "#43c988";
+            } else {
+                const error =
+                    "Bio must contain only lowercase letters, underscores, hyphens and be 8 - 50 characters";
+                YBio.innerHTML = error;
+                YourBio.style.border = "2px solid #f7b1dd";
+                YourBio.style.backgroundColor = "#ffefef";
+                document.getElementById("button").style.backgroundColor =
+                    "rgb(78, 78, 79)";
+            }
+        }
+
+        const button = document.getElementById("button");
+        button.addEventListener("click", fun);
+
+        function fun() {
+            const FirstName = document.getElementById("FirstName");
+            const LastName = document.getElementById("LastName");
+            const Email = document.getElementById("Email");
+            const Password = document.getElementById("Password");
+            const Telephone = document.getElementById("Telephone");
+            const YourBio = document.getElementById("YourBio");
+
+            const FName = document.getElementById("FName");
+            if (
+                /^[a-zA-Z]/.test(FirstName.value) &&
+                /^[a-zA-Z]{3,16}$/.test(FirstName.value)
+            ) {
+                FName.innerHTML = "";
+                console.log(true);
+                FirstName.style.border = "2px solid #43c988";
+                FirstName.style.backgroundColor = "rgb(239 255 247)";
+                document.getElementById("button").style.backgroundColor = "#43c988";
+            } else {
+                const error =
+                    "First name should be alphanumeric and contain 3 - 16 characters";
+                FName.innerHTML = error;
+                FirstName.style.border = "2px solid #f7b1dd";
+                FirstName.style.backgroundColor = "#ffefef";
+                document.getElementById("button").style.backgroundColor =
+                    "rgb(78, 78, 79)";
+            }
+
+            const LName = document.getElementById("LName");
+            if (
+                /^[a-zA-Z]/.test(LastName.value) &&
+                /^[a-zA-Z]{3,16}$/.test(LastName.value)
+            ) {
+                console.log(true);
+                LName.innerHTML = "";
+                LastName.style.border = "2px solid #43c988";
+                LastName.style.backgroundColor = "rgb(239 255 247)";
+                document.getElementById("button").style.backgroundColor = "#43c988";
+            } else {
+                const error =
+                    "First name should be alphanumeric and contain 3 - 16 characters";
+                LName.innerHTML = error;
+                LastName.style.border = "2px solid #f7b1dd";
+                LastName.style.backgroundColor = "#ffefef";
+                document.getElementById("button").style.backgroundColor =
+                    "rgb(78, 78, 79)";
+            }
+
+            const email = document.getElementById("email");
+            if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(Email.value)) {
+                console.log(true);
+                email.innerHTML = "";
+                Email.style.border = "2px solid #43c988";
+                Email.style.backgroundColor = "rgb(239 255 247)";
+                document.getElementById("button").style.backgroundColor = "#43c988";
+            } else {
+                const error = "Email must be a valid address, e.g. example@gmail.com";
+                email.innerHTML = error;
+                Email.style.border = "2px solid #f7b1dd";
+                Email.style.backgroundColor = "#ffefef";
+                document.getElementById("button").style.backgroundColor =
+                    "rgb(78, 78, 79)";
+                console.log(false);
+            }
+
+            const password = document.getElementById("password");
+            let regexp1 = /^(?=.*\d)(?=.*[@_-])(?=.*[a-z])(?=.*[A-Z]).{8,16}$/;
+            // let regexp1 = [a-zA-Z][a-zA-Z0-9-_.]{1,20}
+            if (regexp1.test(Password.value)) {
+                console.log(true);
+                password.innerHTML = "";
+                Password.style.border = "2px solid #43c988";
+                Password.style.backgroundColor = "rgb(239 255 247)";
+                document.getElementById("button").style.backgroundColor = "#43c988";
+            } else {
+                const error =
+                    "Password must be alphanumeric (@, _ and - are also allowed ) and between 6 - 20 characters";
+                password.innerHTML = error;
+                Password.style.border = "2px solid #f7b1dd";
+                Password.style.backgroundColor = "#ffefef";
+                document.getElementById("button").style.backgroundColor =
+                    "rgb(78, 78, 79)";
+                console.log(false);
+            }
+
+            const telephone = document.getElementById("telephone");
+            if (/^[0-9]{11,11}$/.test(Telephone.value)) {
+                console.log(true);
+                telephone.innerHTML = "";
+                Telephone.style.border = "2px solid #43c988";
+                Telephone.style.backgroundColor = "rgb(239 255 247)";
+                document.getElementById("button").style.backgroundColor = "#43c988";
+            } else {
+                const error = "A valid Telephone number (11 digits and 333-333-3334)";
+                telephone.innerHTML = error;
+                Telephone.style.border = "2px solid #f7b1dd";
+                Telephone.style.backgroundColor = "#ffefef";
+                document.getElementById("button").style.backgroundColor =
+                    "rgb(78, 78, 79)";
+            }
+
+            const YBio = document.getElementById("YBio");
+            let regexp2 = new RegExp("^[a-z_-]{8,50}$");
+            if (regexp2.test(YourBio.value)) {
+                console.log(true);
+                YBio.innerHTML = "";
+                YourBio.style.border = "2px solid #43c988";
+                YourBio.style.backgroundColor = "rgb(239 255 247)";
+                document.getElementById("button").style.backgroundColor = "#43c988";
+            } else {
+                const error =
+                    "Bio must contain only lowercase letters, underscores, hyphens and be 8 - 50 characters";
+                YBio.innerHTML = error;
+                YourBio.style.border = "2px solid #f7b1dd";
+                YourBio.style.backgroundColor = "#ffefef";
+                document.getElementById("button").style.backgroundColor =
+                    "rgb(78, 78, 79)";
+            }
+        }
+    </script>
+</body>
+
+</html>
